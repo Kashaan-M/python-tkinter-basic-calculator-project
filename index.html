@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bouncing Ball</title>
+        <style>
+            *, *::before, *::after {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(0, 0, 0);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 400px;
+  perspective-origin: center calc(50% - 100px);
+  overflow: hidden;
+}
+
+.rise {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: riseRotate 30s infinite linear;
+}
+@keyframes riseRotate {
+  from {
+    transform: rotateX(90deg) rotate(0);
+  }
+  to {
+    transform: rotateX(90deg) rotate(-360deg);
+  }
+}
+
+.step {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  transform-style: preserve-3d;
+  animation: stepPosition 15s infinite linear;
+}
+.step:nth-child(1) {
+  top: -75px;
+  left: -75px;
+}
+.step:nth-child(6) {
+  top: -75px;
+  left: 50px;
+}
+.step:nth-child(11) {
+  top: 50px;
+  left: 50px;
+}
+.step:nth-child(16) {
+  top: 50px;
+  left: -75px;
+}
+.step:nth-child(2) {
+  top: -75px;
+  left: -50px;
+}
+.step:nth-child(7) {
+  top: -50px;
+  left: 50px;
+}
+.step:nth-child(12) {
+  top: 50px;
+  left: 25px;
+}
+.step:nth-child(17) {
+  top: 25px;
+  left: -75px;
+}
+.step:nth-child(3) {
+  top: -75px;
+  left: -25px;
+}
+.step:nth-child(8) {
+  top: -25px;
+  left: 50px;
+}
+.step:nth-child(13) {
+  top: 50px;
+  left: 0px;
+}
+.step:nth-child(18) {
+  top: 0px;
+  left: -75px;
+}
+.step:nth-child(4) {
+  top: -75px;
+  left: 0px;
+}
+.step:nth-child(9) {
+  top: 0px;
+  left: 50px;
+}
+.step:nth-child(14) {
+  top: 50px;
+  left: -25px;
+}
+.step:nth-child(19) {
+  top: -25px;
+  left: -75px;
+}
+.step:nth-child(5) {
+  top: -75px;
+  left: 25px;
+}
+.step:nth-child(10) {
+  top: 25px;
+  left: 50px;
+}
+.step:nth-child(15) {
+  top: 50px;
+  left: -50px;
+}
+.step:nth-child(20) {
+  top: -50px;
+  left: -75px;
+}
+.step:nth-child(1) {
+  animation-delay: -15s;
+  background-color: #ef8f8f;
+}
+.step:nth-child(1)::after {
+  animation-delay: -15s, -15s, 0s;
+}
+.step:nth-child(2) {
+  animation-delay: -14.25s;
+  background-color: #efac8f;
+}
+.step:nth-child(2)::after {
+  animation-delay: -14.25s, -14.25s, 0s;
+}
+.step:nth-child(3) {
+  animation-delay: -13.5s;
+  background-color: #efc98f;
+}
+.step:nth-child(3)::after {
+  animation-delay: -13.5s, -13.5s, 0s;
+}
+.step:nth-child(4) {
+  animation-delay: -12.75s;
+  background-color: #efe68f;
+}
+.step:nth-child(4)::after {
+  animation-delay: -12.75s, -12.75s, 0s;
+}
+.step:nth-child(5) {
+  animation-delay: -12s;
+  background-color: #dcef8f;
+}
+.step:nth-child(5)::after {
+  animation-delay: -12s, -12s, 0s;
+}
+.step:nth-child(6) {
+  animation-delay: -11.25s;
+  background-color: #bfef8f;
+}
+.step:nth-child(6)::after {
+  animation-delay: -11.25s, -11.25s, 0s;
+}
+.step:nth-child(7) {
+  animation-delay: -10.5s;
+  background-color: #a3ef8f;
+}
+.step:nth-child(7)::after {
+  animation-delay: -10.5s, -10.5s, 0s;
+}
+.step:nth-child(8) {
+  animation-delay: -9.75s;
+  background-color: #8fef99;
+}
+.step:nth-child(8)::after {
+  animation-delay: -9.75s, -9.75s, 0s;
+}
+.step:nth-child(9) {
+  animation-delay: -9s;
+  background-color: #8fefb6;
+}
+.step:nth-child(9)::after {
+  animation-delay: -9s, -9s, 0s;
+}
+.step:nth-child(10) {
+  animation-delay: -8.25s;
+  background-color: #8fefd2;
+}
+.step:nth-child(10)::after {
+  animation-delay: -8.25s, -8.25s, 0s;
+}
+.step:nth-child(11) {
+  animation-delay: -7.5s;
+  background-color: #8fefef;
+}
+.step:nth-child(11)::after {
+  animation-delay: -7.5s, -7.5s, 0s;
+}
+.step:nth-child(12) {
+  animation-delay: -6.75s;
+  background-color: #8fd2ef;
+}
+.step:nth-child(12)::after {
+  animation-delay: -6.75s, -6.75s, 0s;
+}
+.step:nth-child(13) {
+  animation-delay: -6s;
+  background-color: #8fb6ef;
+}
+.step:nth-child(13)::after {
+  animation-delay: -6s, -6s, 0s;
+}
+.step:nth-child(14) {
+  animation-delay: -5.25s;
+  background-color: #8f99ef;
+}
+.step:nth-child(14)::after {
+  animation-delay: -5.25s, -5.25s, 0s;
+}
+.step:nth-child(15) {
+  animation-delay: -4.5s;
+  background-color: #a38fef;
+}
+.step:nth-child(15)::after {
+  animation-delay: -4.5s, -4.5s, 0s;
+}
+.step:nth-child(16) {
+  animation-delay: -3.75s;
+  background-color: #bf8fef;
+}
+.step:nth-child(16)::after {
+  animation-delay: -3.75s, -3.75s, 0s;
+}
+.step:nth-child(17) {
+  animation-delay: -3s;
+  background-color: #dc8fef;
+}
+.step:nth-child(17)::after {
+  animation-delay: -3s, -3s, 0s;
+}
+.step:nth-child(18) {
+  animation-delay: -2.25s;
+  background-color: #ef8fe6;
+}
+.step:nth-child(18)::after {
+  animation-delay: -2.25s, -2.25s, 0s;
+}
+.step:nth-child(19) {
+  animation-delay: -1.5s;
+  background-color: #ef8fc9;
+}
+.step:nth-child(19)::after {
+  animation-delay: -1.5s, -1.5s, 0s;
+}
+.step:nth-child(20) {
+  animation-delay: -0.75s;
+  background-color: #ef8fac;
+}
+.step:nth-child(20)::after {
+  animation-delay: -0.75s, -0.75s, 0s;
+}
+@keyframes stepPosition {
+  0% {
+    transform: translateZ(600px);
+  }
+  4%, 5% {
+    transform: translateZ(112.5px);
+  }
+  85%, 87.5% {
+    transform: translateZ(-87.5px);
+  }
+  100% {
+    transform: translateZ(-600px);
+  }
+}
+.step::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-image: radial-gradient(#000, #0000 75%);
+  animation: shadowPosition 15s infinite linear, shadowOpacity 7.5s infinite alternate ease-in, shadowAngle 15s infinite alternate step-end;
+  --rotate: 0deg;
+}
+@keyframes shadowPosition {
+  0% {
+    transform: rotateZ(var(--rotate)) translateX(-500%);
+  }
+  100% {
+    transform: rotateZ(var(--rotate)) translateX(500%);
+  }
+}
+@keyframes shadowOpacity {
+  0%, 85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+@keyframes shadowAngle {
+  0% {
+    --rotate: 180deg;
+  }
+  25% {
+    --rotate: 270deg;
+  }
+  50% {
+    --rotate: 0deg;
+  }
+  75% {
+    --rotate: 90deg;
+  }
+}
+.step > * {
+  position: absolute;
+  background-color: inherit;
+}
+.step .top {
+  top: 0;
+  width: 25px;
+  height: 50px;
+  background-image: linear-gradient(#0004, #0000 2px calc(100% - 2px), #0004), linear-gradient(90deg, #0004, #0000 2px calc(100% - 2px), #0004), linear-gradient(to bottom, transparent, #0007);
+  transform: rotateX(-90deg);
+  transform-origin: top;
+}
+.step .bottom {
+  bottom: 0;
+  width: 25px;
+  height: 50px;
+  background-image: linear-gradient(#0004, #0000 2px calc(100% - 2px), #0004), linear-gradient(90deg, #0004, #0000 2px calc(100% - 2px), #0004), linear-gradient(to top, transparent, #0007);
+  transform: rotateX(90deg);
+  transform-origin: bottom;
+}
+.step .left {
+  left: 0;
+  width: 50px;
+  height: 25px;
+  background-image: linear-gradient(#0004, #0000 2px calc(100% - 2px), #0004), linear-gradient(90deg, #0004, #0000 2px calc(100% - 2px), #0004), linear-gradient(to right, transparent, #0007);
+  transform: rotateY(90deg);
+  transform-origin: left;
+}
+.step .right {
+  right: 0;
+  width: 50px;
+  height: 25px;
+  background-image: linear-gradient(#0004, #0000 2px calc(100% - 2px), #0004), linear-gradient(90deg, #0004, #0000 2px calc(100% - 2px), #0004), linear-gradient(to left, transparent, #0007);
+  transform: rotateY(-90deg);
+  transform-origin: right;
+}
+
+.ball {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  transform-style: preserve-3d;
+  animation: ballPosition 15s -7.5s infinite linear, ballAngle 30s infinite linear;
+}
+.ball::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-image: radial-gradient(circle at bottom, #fff, #222);
+  border-radius: 50%;
+  animation: ballBounce 0.375s infinite alternate ease-out;
+}
+@keyframes ballBounce {
+  from {
+    transform: rotateX(90deg) translateY(12.5px);
+  }
+  to {
+    transform: rotateX(90deg) translateY(50px);
+  }
+}
+@keyframes ballPosition {
+  0%, 100% {
+    top: -75px;
+    left: -75px;
+  }
+  25% {
+    top: -75px;
+    left: 50px;
+  }
+  50% {
+    top: 50px;
+    left: 50px;
+  }
+  75% {
+    top: 50px;
+    left: -75px;
+  }
+}
+@keyframes ballAngle {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+        </style>
+    </head>
+ 
+    <body>
+        <div class="rise">
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+            <div class="step"><div class="top"></div><div class="bottom"></div><div class="left"></div><div class="right"></div></div>
+          
+            <div class="ball"></div>
+          </div>
+    </body>
+</html>
